@@ -53,18 +53,19 @@ class game():
 
 	def play(self,current_player,dboard):
 		try:
-			position=int(input("where would you like to fill"))
+
+			position=int(input(f"Player {current_player} where would you like to fill"))
 
 		except:
-			position=int(input("Seems like you provided an invaalid number /n where would you like to fill"))
+			position=int(input(f"Player {current_player} Seems like you provided an invalid number \n where would you like to fill"))
 
 		if position in dboard.filled_boxes:
 			print("position already occupied")
-			position=int(input("where would you like to fill"))
+			position=int(input(f"Player {current_player} where would you like to fill"))
 
 		elif position not in dboard.board_state:
 			print("invalid position , chose btw 1 and 9")
-			position=int(input("where would you like to fill"))
+			position=int(input(f"Player {current_player} where would you like to fill"))
 
 
 		dboard.update(current_player,position,self)
@@ -83,7 +84,7 @@ class game():
 
 
 	def end(self,winner):
-		message=f'{winner} wins by {self.scoreline[winner]} : {self.scoreline[{loser for loser in self.scoreline if loser!=winner}] }' 
+		message=f'{winner} wins by {self.scoreline[winner]} : ' 
 
 		print(message)
 
@@ -100,22 +101,20 @@ class player():
 
 instructions=f''' 
 
-WELCOME PLAYERS /n
-/n
-Read The Instructions Of The Game Carefully /n
+WELCOME PLAYERS \n
+Read The Instructions Of The Game Carefully \n
 
-1|2|3 \n-+-+-\n 4|5|6 \n-+-+-\n 7|8|9"
+1|2|3\n-+-+-\n4|5|6\n-+-+-\n7|8|9
 
-Inorder to plant your letter in any space simply 
-input the number associated with the cell
+Inorder to plant your letter in any space simply input the number associated with the cell
 
 '''
 
 print(instructions)
 
-print('are you ready')
+print('Are you readyyyyyyy')
 print("player 1 ")
-player1=input('choose a letter between X and O /n should be capital')
+player1=input('choose a letter between X and O \nNote: The letter should be capital')
 if player1=="X":
 	first_player=player('X')
 	second_player=player("O")
@@ -129,7 +128,7 @@ elif player1=="O":
 try:
 	best=int(input("best of how many"))
 except:
-	best=int(input("invalid input ,/n integer input only /n best of how many"))
+	best=int(input("invalid input ,\n integer input only \n best of how many"))
 
 
 gamee=game(best,first_player,second_player)
